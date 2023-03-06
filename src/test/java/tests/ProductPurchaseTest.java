@@ -1,3 +1,5 @@
+package tests;
+
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
@@ -7,6 +9,21 @@ public class ProductPurchaseTest extends BaseTest {
 
     @Test
     public void successfulPurchase() {
+
+        loginPage.open();
+        loginPage.login(USER, PASSWORD);
+        productsPage.addToCart("Sauce Labs Backpack");
+        productsPage.openCart();
+        cartPage.checkout();
+
+        checkoutPage.checkoutContinue("name", "lname", "12345");
+        driver.findElement(By.id("finish")).click();
+        String complete = driver.findElement(By.cssSelector(".title")).getText();
+        assertEquals(complete, "Checkout: Complete!", "покупка не завершена");
+
+
+
+        /*
         driver.get("https://www.saucedemo.com");
         driver.findElement(By.id("user-name")).sendKeys("standard_user");
         driver.findElement(By.id("password")).sendKeys("secret_sauce");
@@ -31,7 +48,7 @@ public class ProductPurchaseTest extends BaseTest {
         driver.findElement(By.id("finish")).click();
         String complete = driver.findElement(By.cssSelector(".title")).getText();
         assertEquals(complete, "Checkout: Complete!", "покупка не завершена");
-
+*/
     }
 
 
