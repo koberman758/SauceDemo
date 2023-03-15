@@ -2,33 +2,31 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class CartPage extends BasePage {
+public class CartPage extends BasePage{
 
     public static final By CHECKOUT_BUTTON = By.id("checkout");
     public static final By CONTINUE_SHOPPING_BUTTON = By.id("continue-shopping");
     String removeItemXpath = "//*[text()='%s']/ancestor::*[contains(@class, 'cart_item')]//button";
 
-    public CartPage(WebDriver driver) {
-
+    public CartPage(WebDriver driver){
         super(driver);
     }
 
-    public void open() {
+    public void open(){
         driver.get(BASE_URL + "/cart.html");
     }
 
-    public void checkout() {
+    public void checkout(){
         driver.findElement(CHECKOUT_BUTTON).click();
     }
 
-    public void removeItem(String item) {
+    public void removeItem(String item){
         By removeItemLocator = By.xpath(String.format(removeItemXpath, item));
         driver.findElement(removeItemLocator).click();
     }
 
-    public void continueShopping() {
+    public void continueShopping(){
         driver.findElement(CONTINUE_SHOPPING_BUTTON).click();
     }
 }

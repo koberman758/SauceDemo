@@ -1,18 +1,12 @@
 package tests;
-
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.util.List;
-
 import static org.testng.Assert.assertEquals;
-
 public class CheckoutTest extends BaseTest {
-
     @Test(description = "Successful checkout", retryAnalyzer = Retry.class)
-    public void successfulCheckout() {
+    public void successfulCheckout(){
         loginPage.open();
         loginPage.login(USER, PASSWORD);
         productsPage.openCart();
@@ -23,7 +17,7 @@ public class CheckoutTest extends BaseTest {
     }
 
     @DataProvider(name = "Входящие данные для негативных тестов")
-    public Object[][] getDataForCheckout() {
+    public Object[][] getDataForCheckout(){
         return new Object[][]{
                 {"", "test", "12345", "Error: First Name is required"},
                 {"test", "", "12345", "Error: Last Name is required"},
@@ -33,7 +27,7 @@ public class CheckoutTest extends BaseTest {
 
     @Test(description = "Unsuccessful checkout", dataProvider = "Входящие данные для негативных тестов",
             retryAnalyzer = Retry.class)
-    public void negativeCheckout(String firstname, String lastname, String zipCode, String expectedError) {
+    public void negativeCheckout(String firstname, String lastname, String zipCode, String expectedError){
         loginPage.open();
         loginPage.login(USER, PASSWORD);
         productsPage.openCart();
@@ -43,8 +37,8 @@ public class CheckoutTest extends BaseTest {
         assertEquals(error, expectedError, "Wrong error message");
     }
 
-    @Test(description = "check cancel button return to cart", retryAnalyzer = Retry.class)
-    public void cancelButton() {
+    @Test(description = "Check cancel button return to cart", retryAnalyzer = Retry.class)
+    public void cancelButton(){
         loginPage.open();
         loginPage.login(USER, PASSWORD);
         productsPage.openCart();
@@ -53,6 +47,5 @@ public class CheckoutTest extends BaseTest {
         String title = driver.findElement(By.cssSelector(".title")).getText();
         assertEquals(title, "Your Cart", "Wrong error message");
     }
-
 
 }

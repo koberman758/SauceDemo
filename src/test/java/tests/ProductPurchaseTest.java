@@ -1,14 +1,11 @@
 package tests;
-
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
-
-public class ProductPurchaseTest extends BaseTest {
-
-    @Test(description = "successfulPurchase", retryAnalyzer = Retry.class)
-    public void successfulPurchase() {
+public class ProductPurchaseTest extends BaseTest{
+    @Test(description = "SuccessfulPurchase", retryAnalyzer = Retry.class)
+    public void successfulPurchase(){
         loginPage.open();
         loginPage.login(USER, PASSWORD);
         productsPage.addToCart("Sauce Labs Backpack");
@@ -21,7 +18,7 @@ public class ProductPurchaseTest extends BaseTest {
     }
 
     @Test(description = "Button 'back home' return to products page", retryAnalyzer = Retry.class)
-    public void backHomeButton() {
+    public void backHomeButton(){
         loginPage.open();
         loginPage.login(USER, PASSWORD);
         productsPage.addToCart("Sauce Labs Backpack");
