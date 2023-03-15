@@ -6,8 +6,7 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.assertEquals;
 
 public class ProductPurchaseTest extends BaseTest {
-
-    @Test(description = "successfulPurchase", retryAnalyzer = Retry.class)
+    @Test(description = "SuccessfulPurchase", retryAnalyzer = Retry.class)
     public void successfulPurchase() {
         loginPage.open();
         loginPage.login(USER, PASSWORD);

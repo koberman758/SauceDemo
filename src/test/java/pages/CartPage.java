@@ -2,7 +2,6 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class CartPage extends BasePage {
 
@@ -11,7 +10,6 @@ public class CartPage extends BasePage {
     String removeItemXpath = "//*[text()='%s']/ancestor::*[contains(@class, 'cart_item')]//button";
 
     public CartPage(WebDriver driver) {
-
         super(driver);
     }
 

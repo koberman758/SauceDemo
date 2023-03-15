@@ -1,23 +1,18 @@
 package tests;
 
-import org.openqa.selenium.By;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import pages.LoginPage;
 
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
 
 public class LoginTest extends BaseTest {
 
-    @Test(description = "check if user can login", retryAnalyzer = Retry.class)
+    @Test(description = "Check if user can login", retryAnalyzer = Retry.class)
     public void successfulLogin() {
-
         loginPage.open();
         loginPage.login(USER, PASSWORD);
         String title = productsPage.getTitle();
         assertEquals(title, "Products", "пользователь не зарегистрирован");
-
     }
 
     @DataProvider(name = "Входящие данные для негативных тестов на логин")
@@ -30,7 +25,7 @@ public class LoginTest extends BaseTest {
         };
     }
 
-    @Test(description = "user name should be required", dataProvider = "Входящие данные для негативных тестов на логин")
+    @Test(description = "User name should be required", dataProvider = "Входящие данные для негативных тестов на логин")
     public void negativeLogin(String username, String password, String expectedError) {
         loginPage.open();
         loginPage.login(username, password);

@@ -17,12 +17,9 @@ abstract class BasePage {
 
     BasePage(WebDriver driver) {
         this.driver = driver;
-
-
     }
 
     public String getTitle() {
         return driver.findElement(TITLE).getText();
     }
-
 }

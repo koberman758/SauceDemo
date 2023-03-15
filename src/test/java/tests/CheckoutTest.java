@@ -1,16 +1,12 @@
 package tests;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
-import java.util.List;
 
 import static org.testng.Assert.assertEquals;
 
 public class CheckoutTest extends BaseTest {
-
     @Test(description = "Successful checkout", retryAnalyzer = Retry.class)
     public void successfulCheckout() {
         loginPage.open();
@@ -43,7 +39,7 @@ public class CheckoutTest extends BaseTest {
         assertEquals(error, expectedError, "Wrong error message");
     }
 
-    @Test(description = "check cancel button return to cart", retryAnalyzer = Retry.class)
+    @Test(description = "Check cancel button return to cart", retryAnalyzer = Retry.class)
     public void cancelButton() {
         loginPage.open();
         loginPage.login(USER, PASSWORD);
@@ -53,6 +49,5 @@ public class CheckoutTest extends BaseTest {
         String title = driver.findElement(By.cssSelector(".title")).getText();
         assertEquals(title, "Your Cart", "Wrong error message");
     }
-
 
 }
