@@ -2,12 +2,13 @@ package tests;
 
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
+
 import static org.testng.Assert.assertEquals;
 
-public class CartTest extends BaseTest{
+public class CartTest extends BaseTest {
 
     @Test(description = "Remove product from cart", retryAnalyzer = Retry.class)
-    public void removeProductFromCart(){
+    public void removeProductFromCart() {
         loginPage.open();
         loginPage.login(USER, PASSWORD);
         productsPage.addToCart("Sauce Labs Backpack");

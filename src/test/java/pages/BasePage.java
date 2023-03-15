@@ -9,17 +9,17 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-abstract class BasePage{
+abstract class BasePage {
     WebDriver driver;
 
     public static final String BASE_URL = "https://www.saucedemo.com/";
     public static final By TITLE = By.cssSelector(".title");
 
-    BasePage(WebDriver driver){
+    BasePage(WebDriver driver) {
         this.driver = driver;
     }
 
-    public String getTitle(){
+    public String getTitle() {
         return driver.findElement(TITLE).getText();
     }
 }

@@ -1,10 +1,11 @@
 package tests;
+
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
-public class ProductsTest extends BaseTest{
+public class ProductsTest extends BaseTest {
 
     @Test(description = "Product added to cart", retryAnalyzer = Retry.class)
     public void productAddedToCart() {

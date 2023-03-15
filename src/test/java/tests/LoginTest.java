@@ -1,12 +1,14 @@
 package tests;
+
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
-public class LoginTest extends BaseTest{
+
+public class LoginTest extends BaseTest {
 
     @Test(description = "Check if user can login", retryAnalyzer = Retry.class)
-    public void successfulLogin(){
+    public void successfulLogin() {
         loginPage.open();
         loginPage.login(USER, PASSWORD);
         String title = productsPage.getTitle();
@@ -14,7 +16,7 @@ public class LoginTest extends BaseTest{
     }
 
     @DataProvider(name = "Входящие данные для негативных тестов на логин")
-    public Object[][] getDataForLogin(){
+    public Object[][] getDataForLogin() {
         return new Object[][]{
                 {"", "", "Epic sadface: Username is required"},
                 {"standard_user", "", "Epic sadface: Password is required"},
