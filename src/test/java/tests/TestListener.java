@@ -27,7 +27,7 @@ public class TestListener implements ITestListener {
     }
 
     @Override
-    public void onTestSkipped(ITestResult iTestResult {
+    public void onTestSkipped(ITestResult iTestResult) {
         System.out.println(String.format("======================================== SKIPPING TEST %s ========================================", iTestResult.getName()));
     }
 

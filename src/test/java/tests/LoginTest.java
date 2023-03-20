@@ -7,7 +7,7 @@ import static org.testng.Assert.assertEquals;
 
 public class LoginTest extends BaseTest {
 
-    @Test(description = "Check if user can login", retryAnalyzer = Retry.class)
+    @Test(description = "Check if user can login")
     public void successfulLogin() {
         loginPage.open();
         loginPage.login(USER, PASSWORD);
@@ -32,40 +32,4 @@ public class LoginTest extends BaseTest {
         String error = loginPage.getErrorMessage();
         assertEquals(error, expectedError, "wrong error message");
     }
-
-   /* @Test(description = "user name should be required")
-    public void usernameIsRequired() {
-        loginPage.open();
-        loginPage.login("", "");
-        String error = loginPage.getErrorMessage();
-        assertEquals(error, "Epic sadface: Username is required", "wrong error message");
-    }
-
-   @Test
-    public void passwordIsRequired() {
-        loginPage.open();
-        loginPage.login("standard_use", "");
-        String error = loginPage.getErrorMessage();
-        assertEquals(error, "Epic sadface: Password is required", "wrong error message");
-    }
-
-    @Test
-    public void incorrectUsernameAndPassword() {
-        loginPage.open();
-        loginPage.login("test", "test");
-        String error = loginPage.getErrorMessage();
-        assertEquals(error, "Epic sadface: Username and password do not match any user in this service",
-                "wrong error message");
-
-    }
-
-    @Test
-    public void lockedOutUser() {
-        loginPage.open();
-        loginPage.login("locked_out_user", "secret_sauce");
-        String error = loginPage.getErrorMessage();
-        assertEquals(error, "Epic sadface: Sorry, this user has been locked out.",
-                "wrong error message");
-    }
-    */
 }

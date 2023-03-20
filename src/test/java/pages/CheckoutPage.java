@@ -10,6 +10,8 @@ public class CheckoutPage extends BasePage {
     public static final By CANCEL_BUTTON = By.id("cancel");
     public static final By CONTINUE_BUTTON = By.id("continue");
     public static final By ERROR_MESSAGE = By.cssSelector("[data-test=error]");
+    public static final By FINISH_BUTTON = By.id("finish");
+    public static final By BACK_TO_PRODUCTS_BUTTON = By.id("back-to-products");
 
     public CheckoutPage(WebDriver driver) {
         super(driver);
@@ -29,5 +31,14 @@ public class CheckoutPage extends BasePage {
     public String getErrorMessage() {
         return driver.findElement(ERROR_MESSAGE).getText();
     }
+
+    public void finishButton() {
+        driver.findElement(FINISH_BUTTON).click();
+    }
+
+    public void backToProductsButton() {
+        driver.findElement(BACK_TO_PRODUCTS_BUTTON).click();
+    }
+
 
 }

@@ -2,13 +2,12 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class ProductsPage extends BasePage{
     String addToCartXpath = "//*[text()='%s']/ancestor::*[contains(@class, 'inventory_item')]//button";
     String removeFromCartXpath = "//*[text()='%s']/ancestor::*[contains(@class, 'inventory_item')]//button";
-
     public static final By CART = By.id("shopping_cart_container");
+    public static final By CART_BADGE = By.cssSelector(".shopping_cart_badge");
 
     public ProductsPage(WebDriver driver){
         super(driver);
@@ -24,9 +23,13 @@ public class ProductsPage extends BasePage{
         driver.findElement(removeFromCartLocator).click();
     }
 
-
     public void openCart(){
         driver.findElement(CART).click();
     }
+
+    public String cartBadge() {
+        return driver.findElement(CART_BADGE).getText();
+    }
+
 
 }

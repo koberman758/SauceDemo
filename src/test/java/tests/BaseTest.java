@@ -30,10 +30,8 @@ public class BaseTest {
             WebDriverManager.chromedriver().setup();
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--remote-allow-origins=*");
-            // options.addArguments("--headless");
             driver = new ChromeDriver(options);
-        }
-        else if (browser.equals("edge")) {
+        } else if (browser.equals("edge")) {
             WebDriverManager.edgedriver().setup();
             driver = new EdgeDriver();
         }
