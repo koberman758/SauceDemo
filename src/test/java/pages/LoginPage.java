@@ -20,7 +20,7 @@ public class LoginPage extends BasePage {
         driver.get(BASE_URL);
     }
 
-    @Step("Login by user '{user}'")
+    @Step("Login by user '{user}', password '{password}'")
     public void login(String user, String password) {
         driver.findElement(USERNAME_INPUT).sendKeys(user);
         driver.findElement(PASSWORD_INPUT).sendKeys(password);
