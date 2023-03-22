@@ -19,12 +19,12 @@ public class CartPage extends BasePage {
         driver.get(BASE_URL + "/cart.html");
     }
 
-    @Step("Opening Checkout page")
+    @Step("Checkout page")
     public void checkout() {
         driver.findElement(CHECKOUT_BUTTON).click();
     }
 
-    @Step("Removing item from the cart")
+    @Step("Removing item from the cart '{item}'")
     public void removeItem(String item) {
         By removeItemLocator = By.xpath(String.format(removeItemXpath, item));
         driver.findElement(removeItemLocator).click();
