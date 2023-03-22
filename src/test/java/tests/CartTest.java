@@ -7,7 +7,7 @@ import static org.testng.Assert.assertEquals;
 
 public class CartTest extends BaseTest {
 
-    @Test(description = "Remove product from cart", retryAnalyzer = Retry.class)
+    @Test(description = "Remove product from cart")
     public void removeProductFromCart() {
         loginPage.open();
         loginPage.login(USER, PASSWORD);
@@ -21,5 +21,4 @@ public class CartTest extends BaseTest {
         int numberOfProducts = driver.findElements(By.className("cart_item")).size();
         assertEquals(numberOfProducts, 2, "the product has not been removed");
     }
-
 }

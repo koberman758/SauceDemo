@@ -1,20 +1,19 @@
 package tests;
 
-import org.openqa.selenium.By;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
 public class CheckoutTest extends BaseTest {
-    @Test(description = "Successful checkout", retryAnalyzer = Retry.class)
+    @Test(description = "Successful checkout")
     public void successfulCheckout() {
         loginPage.open();
         loginPage.login(USER, PASSWORD);
         productsPage.openCart();
         cartPage.checkout();
         checkoutPage.checkoutContinue("firstName", "lastName", "postalCode");
-        String title = driver.findElement(By.cssSelector(".title")).getText();
+        String title = checkoutPage.getTitle();
         assertEquals(title, "Checkout: Overview", "Wrong error message");
     }
 
@@ -27,8 +26,7 @@ public class CheckoutTest extends BaseTest {
         };
     }
 
-    @Test(description = "Unsuccessful checkout", dataProvider = "Входящие данные для негативных тестов",
-            retryAnalyzer = Retry.class)
+    @Test(description = "Unsuccessful checkout", dataProvider = "Входящие данные для негативных тестов")
     public void negativeCheckout(String firstname, String lastname, String zipCode, String expectedError) {
         loginPage.open();
         loginPage.login(USER, PASSWORD);
@@ -39,15 +37,14 @@ public class CheckoutTest extends BaseTest {
         assertEquals(error, expectedError, "Wrong error message");
     }
 
-    @Test(description = "Check cancel button return to cart", retryAnalyzer = Retry.class)
+    @Test(description = "Check cancel button return to cart")
     public void cancelButton() {
         loginPage.open();
         loginPage.login(USER, PASSWORD);
         productsPage.openCart();
         cartPage.checkout();
         checkoutPage.cancelCheckout();
-        String title = driver.findElement(By.cssSelector(".title")).getText();
+        String title = checkoutPage.getTitle();
         assertEquals(title, "Your Cart", "Wrong error message");
     }
-
 }
