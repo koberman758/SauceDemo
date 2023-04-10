@@ -17,3 +17,5 @@ abstract class BasePage {
         return driver.findElement(TITLE).getText();
     }
 }
+
+
