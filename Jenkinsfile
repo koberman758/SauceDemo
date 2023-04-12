@@ -7,6 +7,7 @@ pipeline {
     }
     parameters {
      gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
+     choice(choices: ['chrome', 'edge', 'opera'], name: 'BROWSER')
     }
     stages {
         stage('GIT clone') {
