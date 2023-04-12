@@ -2,6 +2,7 @@ package tests;
 
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import utils.PropertyReader;
 
 import static org.testng.Assert.assertEquals;
 
@@ -10,6 +11,15 @@ public class LoginTest extends BaseTest {
     @Test(description = "Check if user can login")
     public void successfulLogin() {
         loginPage.open();
+        loginPage.login(USER, PASSWORD);
+        String title = productsPage.getTitle();
+        assertEquals(title, "Products", "пользователь не зарегистрирован");
+    }
+
+    @Test(description = "Check if user can login")
+    public void successfulLoginUsingSecrets() {
+        loginPage.open();
+        String login = System.getProperty("user", PropertyReader.getProperty("user"));
         loginPage.login(USER, PASSWORD);
         String title = productsPage.getTitle();
         assertEquals(title, "Products", "пользователь не зарегистрирован");
